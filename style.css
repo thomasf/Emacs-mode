@@ -53,7 +53,6 @@
 div.emacsConsole {
 	position: fixed !important;
 	left: 0 !important;
-	right: 0 !important;
 	bottom: 0 !important;
 	height: 20px !important;
 	background: black !important;
@@ -120,8 +119,6 @@ span.aakextparent > span.aakextlabel {
 }
 
 *:focus {
-	outline: #f1ca7f solid 2px !important;/*
-	outline: invert solid 2px;*/
 }
 
 /* Search function */
