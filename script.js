@@ -40,7 +40,6 @@ var shortcuts = {
 	'CTRL-G': {'h': 'Cancel', 'f': function(e) { log("Hmm.. How did you get here?") } },
 	'CTRL-S': {'h': 'I-search links', 'f': function(e) { searchLinks(e, 0) } },
 	'CTRL-ALT-S': {'h': 'Regexp I-search links', 'f': function(e) { searchLinks(e, 1) } },
-	'CTRL-R': {'h': 'Reverse I-search links', 'f': function(e) { searchLinks(e, 0) } },
 	'CTRL-ALT-R': {'h': 'Reverse regexp I-search links', 'f': function(e) { searchLinks(e, 1) } },
 	'CTRL-J': {'h': 'Jump to link or form control', 'f': function(e) { jumpTo(e) } },
 	// native functions
@@ -164,7 +163,8 @@ var keydownevent = function(e) {
 	var input = '';
 	if (e.shiftKey) input += 'SHIFT-';
 	if (e.ctrlKey)  input += 'CTRL-';
-	if (e.altKey)   input += 'ALT-';
+        if (e.altKey)   input += 'ALT-';
+        if (e.metaKey)   input += 'CTRL-';
 	var key;
 	switch (e.keyCode) {
 		case 226:
