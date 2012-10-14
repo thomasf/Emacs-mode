@@ -11,6 +11,7 @@ See https://chrome.google.com/webstore/detail/miojjimhedbpnnjpneobbfhdicckhhkd
 ### LICENCE
     Copyright (c) 2011 Theis Mackeprang (http://www.5p.dk/)
     Copyright (c) 2011 FLorian Mounier (http://paradoxxxzero.tk/)
+    Copyright (c) 2012 Thomas Frössman (http://thomas.jossystem.se)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
