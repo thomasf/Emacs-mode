@@ -158,7 +158,7 @@ document.addEventListener("keypress", function(e) {
 // listen on keyboard events
 var keydownevent = function(e) {
 	if (e.stopPropagation) e.stopPropagation();
-	
+
 	// read input
 	var input = '';
 	if (e.shiftKey) input += 'SHIFT-';
@@ -176,7 +176,7 @@ var keydownevent = function(e) {
 	}
 	input += key;
 	//console.log("Input: "+input+" ("+e.keyCode+")");
-	
+
 	if (enabled) {
 		// cancel? esc if no elm has focus
 		if ((e.target == document.body && e.keyCode == 27) || input == "CTRL-G") {
@@ -209,7 +209,7 @@ var keydownevent = function(e) {
 			}
 		}
 	}
-	
+
 	// native keybindings
 	if (!inSeq.length) {
 		if (input == 'CTRL-Q') {
@@ -241,13 +241,13 @@ var keydownevent = function(e) {
 		// do default action
 		if (!shortcuts[input]) return;
 	}
-	
+
 	// is the plugin disabled? then do nothing
 	if (!enabled) return;
-	
+
 	// stop events
 	if (e.preventDefault) e.preventDefault();
-	
+
 	// find shortcut
 	var shortcut = shortcuts;
 	inSeq.push(input);
@@ -318,7 +318,7 @@ var jumpTo = function(e) {
 		var p = e.parentNode;
 		d.innerText = e.dataset.aakext;
 		d.className = 'styleReset aakextlabel';
-		
+
 		if (e.tagName == "A" || e.tagName == "BUTTON") {
 			// yay, we can put the label inside the element
 			var dd = document.createElement('SPAN');
