@@ -558,3 +558,7 @@ var evalJS = function(e) {
 		log("Eval JavaScript: "+input.join(""));
 	};
 };
+
+// Local Variables:
+// indent-tabs-mode: t
+// End:
