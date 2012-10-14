@@ -1,5 +1,7 @@
 /*
 	Copyright (c) 2011 Theis Mackeprang (http://www.5p.dk/)
+	Copyright (c) 2011 FLorian Mounier (http://paradoxxxzero.tk/)
+
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +42,7 @@ var shortcuts = {
 	'CTRL-G': {'h': 'Cancel', 'f': function(e) { log("Hmm.. How did you get here?"); } },
 	'CTRL-S': {'h': 'I-search links', 'f': function(e) { searchLinks(e, 0); } },
 	'CTRL-ALT-S': {'h': 'Regexp I-search links', 'f': function(e) { searchLinks(e, 1); } },
+	'CTRL-R': {'h': 'Reverse I-search links', 'f': function(e) { searchLinks(e, 0); } },
 	'CTRL-ALT-R': {'h': 'Reverse regexp I-search links', 'f': function(e) { searchLinks(e, 1); } },
 	'CTRL-J': {'h': 'Jump to link or form control', 'f': function(e) { jumpTo(e); } },
 	// native functions
@@ -77,7 +80,7 @@ var shortcuts = {
 	/* Scrolling in Y */
 	// small scrolling
 	'F': {'h': 'Scroll right 10%', 'f': function(e) { scroll(10, 1); } },
-//	'CTRL-F': function(e) { scroll(10, 1) } },
+//	'CTRL-F': function(e) { scroll(10, 1); } },
 	'B': {'h': 'Scroll left 10%', 'f': function(e) { scroll(-10, 1); } },
 	'CTRL-B': {'f': function(e) { scroll(-10, 1); } },
 	// large scrolling
@@ -162,9 +165,9 @@ var keydownevent = function(e) {
 	// read input
 	var input = '';
 	if (e.shiftKey) input += 'SHIFT-';
-	if (e.ctrlKey)  input += 'CTRL-';
-        if (e.altKey)   input += 'ALT-';
-        if (e.metaKey)   input += 'CTRL-';
+	if (e.ctrlKey) input += 'CTRL-';
+	if (e.altKey) input += 'ALT-';
+	if (e.metaKey) input += 'CTRL-';
 	var key;
 	switch (e.keyCode) {
 		case 226:
@@ -291,7 +294,7 @@ var jumpTo = function(e) {
 	var types = ['A','INPUT','TEXTAREA','SELECT','BUTTON'];
 	for (var i = 0; i < types.length; i++) {
 		var elms = document.getElementsByTagName(types[i]);
-		for (var j = 0; j < elms.length; j++) if ((elms[j].type || elms[j].childNodes.length) && elms[j].type != 'hidden' && _gs(elms[j]).display != 'none' && _gs(elms[j]).visibility != 'hidden')  data.elms.push(elms[j]);
+		for (var j = 0; j < elms.length; j++) if ((elms[j].type || elms[j].childNodes.length) && elms[j].type != 'hidden' && _gs(elms[j]).display != 'none' && _gs(elms[j]).visibility != 'hidden')	 data.elms.push(elms[j]);
 	}
 	if (data.elms.length < 1) return;
 
@@ -304,7 +307,7 @@ var jumpTo = function(e) {
 		// assign letter
 		var e = data.elms[i];
 		var gs = _gs(e);
-		e.dataset.aakext = ""
+		e.dataset.aakext = "";
 		for (var j = data.seqlen-1; j >= 0; --j) e.dataset.aakext += letters[key[j]]+(j > 0 ? "-" : "");
 		key[0]++;
 		var index = 0;
@@ -436,6 +439,7 @@ var searchLinks = function(e, reg) {
 				links[marked].classList.remove("emacsHighlightLinksSelected");
 				marked = (marked+1) % links.length;
 				links[marked].classList.add("emacsHighlightLinksSelected");
+				scrollTo(document.getElementsByClassName("emacsHighlightLinksSelected")[0]);
 			}
 		}
 		if (input == "CTRL-ALT-R") {
@@ -446,8 +450,10 @@ var searchLinks = function(e, reg) {
 				marked = (marked-1) % links.length;
 				if (marked < 0) marked += links.length;
 				links[marked].classList.add("emacsHighlightLinksSelected");
+				scrollTo(document.getElementsByClassName("emacsHighlightLinksSelected")[0]);
 			}
 		}
+		return null;
 	};
 	readPress = function(e, key) {
 		document.body.classList.remove("emacsHighlightLinks");
@@ -483,7 +489,17 @@ var searchLinks = function(e, reg) {
 /* Page scrolling functions */
 var scroll = function(p, d) {
 	if (d) document.body.scrollLeft = document.body.scrollLeft+(p/100)*document.body.parentNode.clientWidth;
-	else   document.body.scrollTop  = document.body.scrollTop +(p/100)*document.body.parentNode.clientHeight;
+	else   document.body.scrollTop = document.body.scrollTop +(p/100)*document.body.parentNode.clientHeight;
+};
+
+var scrollTo = function(e) {
+	var margin = 50;
+	if(e.offsetTop > window.innerHeight - margin + document.body.scrollTop) {
+		document.body.scrollTop = e.offsetTop - screen.height / 2;
+	}
+	if(e.offsetTop < document.body.scrollTop) {
+		document.body.scrollTop = e.offsetTop - screen.height / 2;
+	}
 };
 
 var readHelp = function(s, pre) {
@@ -522,7 +538,7 @@ var showHelp = function() {
 		readInput = function() {
 			readQuit();
 		};
-	}
+	};
 };
 
 var evalJS = function(e) {
