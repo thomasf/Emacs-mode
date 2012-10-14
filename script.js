@@ -226,10 +226,10 @@ var keydownevent = function(e) {
 			return;
 		}
 		if (!enabled) {
-            if (input == "CTRL-S" && e.preventDefault)
-                e.preventDefault();
-            return;
-        }
+			if (input == "CTRL-S" && e.preventDefault)
+				e.preventDefault();
+			return;
+		}
 
 		// backspace: page back
 		if (e.keyCode == 8) {
