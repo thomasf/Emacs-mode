@@ -94,7 +94,7 @@ var shortcuts = {
 	'CTRL-A': {'f': function(e) { scroll(-90, 1); } },
 	// help function
 	'SHIFT-+': {'h': 'Show help', 'f': function(e) { showHelp(); } },
-	'CTRL-H': {'M': {'h': 'Show help', 'f': function(e) { showHelp(); } } },
+	//'CTRL-H': {'M': {'h': 'Show help', 'f': function(e) { showHelp(); } } },
 	// eval javascript
 	'SHIFT-ALT-1': {'h': 'Evaluate JavaScript', 'f': function(e) { evalJS(e); } },
 	// link to the god damn GPL
