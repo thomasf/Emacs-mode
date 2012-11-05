@@ -47,7 +47,6 @@ var shortcuts = {
 	'CTRL-ALT-R': {'h': 'Reverse regexp I-search links', 'f': function(e) { searchLinks(e, 1); } },
 	'CTRL-J': {'h': 'Jump to link or form control', 'f': function(e) { jumpTo(e); } },
 	// native functions
-	'BACKSPACE': {'h': 'Previous page in history', 'f': function(e) { log("Hmm.. How did you get here?"); } },
 	'CTRL-T': {'h': 'New tab', 'f': function(e) { chrome.extension.sendRequest({'action':'NEW_TAB'}); } },
 	'ESC': {'h': 'Remove focus from link or form control', 'f': function(e) { log("Hmm.. How did you get here?"); } },
 	'CTRL-X': {
@@ -235,12 +234,6 @@ var keydownevent = function(e) {
 			return;
 		}
 
-		// backspace: page back
-		if (e.keyCode == 8) {
-			if (e.preventDefault) e.preventDefault();
-			history.go(-1);
-			return;
-		}
 		// if no shortcut exist in first press,
 		// do default action
 		if (!shortcuts[input]) return;
