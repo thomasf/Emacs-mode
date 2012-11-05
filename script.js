@@ -59,41 +59,28 @@ var shortcuts = {
 	},
 	/* Scrolling in X */
 	// small scrolling
-	'N': {'h': 'Scroll down 10%', 'f': function(e) { scroll(10, 0); } },
-	'CTRL-N': {'f': function(e) { scroll(10, 0); } },
-	'P': {'h': 'Scroll up 10%', 'f': function(e) { scroll(-10, 0); } },
-	'CTRL-P': {'f': function(e) { scroll(-10, 0); } },
-	'J': {'h': 'Scroll down 10%', 'f': function(e) { scroll(10, 0); } },
-	'K': {'h': 'Scroll up 10%', 'f': function(e) { scroll(-10, 0); } },
+	'ALT-N': {'h': 'Scroll down 10%', 'f': function(e) { scroll(10, 0); } },
+	'ALT-P': {'h': 'Scroll up 10%', 'f': function(e) { scroll(-10, 0); } },
 	// medium scrolling
 	'ALT-E': {'h': 'Scroll down 50%', 'f': function(e) { scroll(50, 0); } },
 	'ALT-A': {'h': 'Scroll up 50%', 'f': function(e) { scroll(-50, 0); } },
 	// page scrolling
-	'V': {'h': 'Scroll down 90%', 'f': function(e) { scroll(90, 0); } },
 	'CTRL-V': {'f': function(e) { scroll(90, 0); } },
 	'ALT-V': {'h': 'Scroll up 90%', 'f': function(e) { scroll(-90, 0); } },
 	// home and end on > and SHIFT->
-	'>': {'h': 'Scroll to end', 'f': function(e) { document.body.scrollTop = document.body.offsetHeight; } },
-	'SHIFT->': {'h': 'Scroll to home', 'f': function(e) { document.body.scrollTop = 0; } },
 	'ALT->': {'f': function(e) { document.body.scrollTop = document.body.offsetHeight; } },
 	'SHIFT-ALT->': {'f': function(e) { document.body.scrollTop = 0; } },
 	/* Scrolling in Y */
 	// small scrolling
-	'F': {'h': 'Scroll right 10%', 'f': function(e) { scroll(10, 1); } },
-//	'CTRL-F': function(e) { scroll(10, 1); } },
-	'B': {'h': 'Scroll left 10%', 'f': function(e) { scroll(-10, 1); } },
 	'CTRL-B': {'f': function(e) { scroll(-10, 1); } },
 	// large scrolling
 	'ALT-F': {'h': 'Scroll right 50%', 'f': function(e) { scroll(50, 1); } },
 	'ALT-B': {'h': 'Scroll left 50%', 'f': function(e) { scroll(-50, 1); } },
 	// page scrolling
-	'E': {'h': 'Scroll right 90%', 'f': function(e) { scroll(90, 1); } },
 	'CTRL-E': {'f': function(e) { scroll(90, 1); } },
-	'A': {'h': 'Scroll left 90%', 'f': function(e) { scroll(-90, 1); } },
 	'CTRL-A': {'f': function(e) { scroll(-90, 1); } },
 	// help function
-	'SHIFT-+': {'h': 'Show help', 'f': function(e) { showHelp(); } },
-	//'CTRL-H': {'M': {'h': 'Show help', 'f': function(e) { showHelp(); } } },
+	'SHIFT-CTRL-+': {'h': 'Show help', 'f': function(e) { showHelp(); } },
 	// eval javascript
 	'SHIFT-ALT-1': {'h': 'Evaluate JavaScript', 'f': function(e) { evalJS(e); } },
 	// link to the god damn GPL
