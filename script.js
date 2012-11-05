@@ -485,8 +485,8 @@ var scrollTo = function(e) {
 
 var readHelp = function(s, pre) {
 	var h = "";
-	for (var i in s) if (s[i]['f']) {
-		if (s[i]['h']) h += pre+i+"\t"+s[i]['h']+"\n";
+	for (var i in s) if (s[i].f) {
+		if (s[i].h) h += pre+i+"\t"+s[i].h+"\n";
 	} else h += readHelp(s[i], pre+i+" ");
 	return h;
 };
@@ -519,7 +519,7 @@ var showHelp = function() {
 		readInput = function() {
 			readQuit();
 		};
-	};
+	}
 };
 
 var evalJS = function(e) {
